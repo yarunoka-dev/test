@@ -42,6 +42,11 @@ func (a Adapter) Ask(req Request) (Response, error) {
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
+	// Killing the adapter is not enough to unblock Wait: a grandchild
+	// that inherited the stdout pipe keeps it open past the kill, and
+	// Wait would sit on the pipe's EOF until that survivor exits. The
+	// delay abandons the pipes and lets Wait return.
+	cmd.WaitDelay = time.Second
 
 	if err := cmd.Run(); err != nil {
 		if ctx.Err() != nil {

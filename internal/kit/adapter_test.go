@@ -53,7 +53,11 @@ func TestAskReportsNonJSONOutputAsAdapterFailure(t *testing.T) {
 }
 
 func TestAskReportsAHangingAdapterAsAdapterFailure(t *testing.T) {
-	a := Adapter{Argv: []string{"sh", "-c", "sleep 10"}, Timeout: 50 * time.Millisecond}
+	// The background child inherits the stdout pipe and survives the kill
+	// of its parent, so the hang has to be cut without waiting for the
+	// pipe's EOF (some shells exec a lone sleep, which would let a plain
+	// "sleep 10" pass here on those platforms while hanging on others).
+	a := Adapter{Argv: []string{"sh", "-c", "sleep 10 & sleep 10"}, Timeout: 50 * time.Millisecond}
 
 	start := time.Now()
 	_, err := a.Ask(request())
