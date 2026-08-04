@@ -1,0 +1,17 @@
+{
+    "description": "An empty resolvers list is rejected - a document that leaves nothing to its host omits the key, so that requiring nothing has a single spelling",
+    "spec": "resolvers - non-empty (omit the key when there are none)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": [],
+            "schedules": [
+                {"days": ["mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

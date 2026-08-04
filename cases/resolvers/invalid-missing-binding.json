@@ -1,0 +1,17 @@
+{
+    "description": "A declared name the host does not bind is rejected - every declared name must be bound",
+    "spec": "Constraints beyond the schema - every declared name is bound by the host",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["company-closures"],
+            "schedules": [
+                {"days": ["company-closures"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
