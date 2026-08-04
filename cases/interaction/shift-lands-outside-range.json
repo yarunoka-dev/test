@@ -1,0 +1,21 @@
+{
+    "description": "A base day inside the range whose landing falls outside produces nothing - base selection ignores the range and clipping comes last",
+    "spec": "shift - the landing day; from / until - clipping is on the resulting points",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"until": "2026-07-01 00:00", "months": [6], "days": [30], "shift": ["next", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-06-01T00:00:00+09:00", "through": "2026-07-31T00:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

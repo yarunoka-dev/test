@@ -1,0 +1,21 @@
+{
+    "description": "An observed holiday - a Sunday holiday shifted to the next business day produces the all-day occurrence on the Monday",
+    "spec": "shift - moves the base day; times / allday - allday on the resulting day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-12"],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": ["holiday"], "shift": ["next", "business_day"], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-12T00:00:00+09:00", "through": "2026-07-14T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-13"]}
+}

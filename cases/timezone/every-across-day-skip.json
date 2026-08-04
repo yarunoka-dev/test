@@ -1,0 +1,16 @@
+{
+    "description": "A wall-clock step landing on a skipped day resolves forward and collapses with the next step - the 12-30 point of a 24-hour row folds onto 12-31, leaving one point",
+    "spec": "every (directly on a schedule) - wall-clock arithmetic resolved per RFC 5545 3.3.5",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Pacific/Apia",
+            "schedules": [
+                {"from": "2011-12-29 12:00", "until": "2012-01-02 00:00", "every": [24, "hour"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2011-12-29T12:00:00-10:00", "through": "2012-01-01T12:00:00+14:00"}
+    },
+    "response": {"result": ["2011-12-29T12:00:00-10:00", "2011-12-31T12:00:00+14:00", "2012-01-01T12:00:00+14:00"]}
+}

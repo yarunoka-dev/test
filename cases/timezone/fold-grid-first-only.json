@@ -1,0 +1,16 @@
+{
+    "description": "A grid time that occurs twice in the fall-back overlap counts only once - an implementation repeating the grid in real time would fire the folded hour twice",
+    "spec": "times / allday - a wall time that occurs twice counts only as its first occurrence (on a grid)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"years": [2021], "months": [10], "days": [31], "times": {"every": [1, "hour"], "between": ["01:00", "04:00"]}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2021-10-31T00:00:00+02:00", "through": "2021-10-31T04:00:00+01:00"}
+    },
+    "response": {"result": ["2021-10-31T01:00:00+02:00", "2021-10-31T02:00:00+02:00", "2021-10-31T03:00:00+01:00"]}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "A fixed time on a day a zone skips outright is interpreted with the pre-transition offset - Apia's 12-30 09:00 stands on 12-31 09:00",
+    "spec": "Document model - gap resolution per RFC 5545 3.3.5 (a whole skipped day)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Pacific/Apia",
+            "schedules": [
+                {"years": [2011], "months": [12], "days": [30], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2011-12-31T09:00:00+14:00"}
+    },
+    "response": {"result": true}
+}

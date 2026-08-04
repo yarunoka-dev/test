@@ -1,0 +1,17 @@
+{
+    "description": "A period answers yes when any one schedule of the union has a point in it - the Monday schedule alone makes the judgment true",
+    "spec": "Evaluation model - union across schedules; judgment over a period",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]},
+                {"days": ["thu"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-27T00:00:00+09:00", "through": "2026-07-28T00:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

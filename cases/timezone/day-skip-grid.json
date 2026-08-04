@@ -1,0 +1,16 @@
+{
+    "description": "The grid of a skipped day is pushed onto the following day and collapses with that day's own grid - 12-30 and 12-31 twelve-hour grids fold into two points, not four",
+    "spec": "times / allday - the grid resolves per RFC 5545 3.3.5; Document model - folded wall times count once",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Pacific/Apia",
+            "schedules": [
+                {"years": [2011], "months": [12], "days": [30, 31], "times": {"every": [12, "hour"]}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2011-12-29T00:00:00-10:00", "through": "2012-01-01T00:00:00+14:00"}
+    },
+    "response": {"result": ["2011-12-31T00:00:00+14:00", "2011-12-31T12:00:00+14:00"]}
+}
