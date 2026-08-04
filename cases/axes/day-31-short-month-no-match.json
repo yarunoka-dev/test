@@ -1,0 +1,16 @@
+{
+    "description": "Day 31 in a 30-day month simply does not match - it must not roll over into the next month, so May 1st is not an occurrence of a days [31] schedule",
+    "spec": "Date axes - a day number a month does not have simply does not match",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [31], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-05-01T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

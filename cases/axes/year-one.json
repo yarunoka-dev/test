@@ -1,0 +1,16 @@
+{
+    "description": "Year 1 is inside the supported range - the lower boundary on the valid side",
+    "spec": "Document model - years run 1-9999 (lower boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [1], "months": [1], "days": [1], "times": ["00:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "0001-01-01T00:00:00Z"}
+    },
+    "response": {"result": true}
+}

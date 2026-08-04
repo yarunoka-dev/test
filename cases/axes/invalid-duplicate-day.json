@@ -1,0 +1,16 @@
+{
+    "description": "A day listed twice is rejected - enumerations reject duplicate members",
+    "spec": "Document model - enumerations reject duplicate members (days)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [25, 25], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-25T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

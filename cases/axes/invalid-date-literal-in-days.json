@@ -1,0 +1,16 @@
+{
+    "description": "A date literal directly in days is rejected - give the date a name under date_sets and refer to it",
+    "spec": "Date axes - a date literal cannot be written directly in days",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["2026-10-01"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

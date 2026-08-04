@@ -1,0 +1,16 @@
+{
+    "description": "Axes combine with AND - the 13th of April does not match months [3] days [13] even though the day matches",
+    "spec": "Schedule - the three-tier algebra, AND between axes",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"months": [3], "days": [13], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-04-13T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

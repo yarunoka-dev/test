@@ -1,0 +1,16 @@
+{
+    "description": "A 5th tuple in a month without a fifth such weekday simply does not match - February 2026 has four Mondays",
+    "spec": "Date axes - in a month without a fifth week, a 5th tuple simply does not match",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [["5th", "mon"]], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-02-23T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

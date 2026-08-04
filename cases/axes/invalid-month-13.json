@@ -1,0 +1,16 @@
+{
+    "description": "Month 13 is rejected - months run 1-12",
+    "spec": "Date axes - months are integers 1-12",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"months": [13], "days": [1], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-01-01T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

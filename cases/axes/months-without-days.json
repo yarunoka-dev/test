@@ -1,0 +1,16 @@
+{
+    "description": "An omitted axis is no restriction - months alone matches every day of July",
+    "spec": "Document model - for the date axes omission means no restriction",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"months": [7], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}
