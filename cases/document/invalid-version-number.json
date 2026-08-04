@@ -1,0 +1,16 @@
+{
+    "description": "A version written as a JSON number is rejected - the version is a string",
+    "spec": "Versioning - the spec version is an x.y string",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": 1.0,
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

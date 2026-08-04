@@ -1,0 +1,16 @@
+{
+    "description": "A version that is not an x.y string is rejected - three components is not the spelling",
+    "spec": "Versioning - the spec version is an x.y string",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

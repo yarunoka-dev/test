@@ -1,0 +1,16 @@
+{
+    "description": "A zone name that does not exist in the tz database is rejected",
+    "spec": "Document model - timezone; Constraints beyond the schema - existence of the timezone name",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Edo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

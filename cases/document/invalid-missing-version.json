@@ -1,0 +1,15 @@
+{
+    "description": "A document without a version is rejected - version is required",
+    "spec": "Document model - version is required",
+    "request": {
+        "action": "eval",
+        "document": {
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

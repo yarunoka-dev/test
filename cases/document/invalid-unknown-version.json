@@ -1,0 +1,16 @@
+{
+    "description": "A version the implementation does not know is rejected rather than silently interpreted - 0.9 predates the first public version and is permanently unknown",
+    "spec": "Document model - version; Versioning - reject unknown versions",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "0.9",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

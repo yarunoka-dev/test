@@ -1,0 +1,17 @@
+{
+    "description": "Two schedules spelled identically are rejected - enumerations reject duplicate members, and the schedules list is an enumeration",
+    "spec": "Document model - enumerations reject duplicate members (schedules)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]},
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
