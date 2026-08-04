@@ -1,0 +1,21 @@
+{
+    "description": "A date_sets entry holding a name is rejected - the value is a list of date literals and never stands for another name",
+    "spec": "calendar - a date_sets value is a list of date literals, nothing else",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["company-closures"],
+            "calendar": {
+                "date_sets": {"closures": "company-closures"}
+            },
+            "schedules": [
+                {"days": ["closures"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"company-closures": ["2026-07-21"]}
+    },
+    "response": {"invalid": true}
+}

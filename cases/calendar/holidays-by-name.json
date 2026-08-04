@@ -1,0 +1,20 @@
+{
+    "description": "A built-in definition referring to a date_sets entry by name - the name resolves inside the document and the holiday vocabulary sees its dates",
+    "spec": "calendar - name references; a name may be written wherever a date list is expected",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": "company-holidays",
+                "date_sets": {"company-holidays": ["2026-07-20"]}
+            },
+            "schedules": [
+                {"days": ["holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-20T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

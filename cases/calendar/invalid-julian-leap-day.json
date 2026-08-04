@@ -1,0 +1,19 @@
+{
+    "description": "A leap day that exists only in the Julian calendar is rejected - dates follow the proleptic Gregorian calendar, where 1500 is not a leap year",
+    "spec": "Document model - proleptic Gregorian calendar; Constraints beyond the schema - every date literal is a real date",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["1500-02-29"]
+            },
+            "schedules": [
+                {"days": ["holiday"], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

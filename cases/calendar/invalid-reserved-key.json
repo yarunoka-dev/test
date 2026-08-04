@@ -1,0 +1,19 @@
+{
+    "description": "A reserved word as a date_sets key is rejected - a date_sets key follows the rules every name follows",
+    "spec": "calendar - a date_sets key must not collide with reserved words",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "date_sets": {"holiday": ["2026-07-20"]}
+            },
+            "schedules": [
+                {"days": ["mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
