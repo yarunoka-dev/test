@@ -1,0 +1,16 @@
+{
+    "description": "The instant at the start of the next day is no longer the all-day occurrence's day - midnight belongs to the day it starts",
+    "spec": "Evaluation model - judgment at a point, all-day matches on the day alone",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [15], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-16T00:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

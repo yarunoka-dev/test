@@ -1,0 +1,17 @@
+{
+    "description": "The same timed occurrence produced by two schedules appears once - within a kind the OR contains it once",
+    "spec": "Document model - within a kind, the OR contains a duplicate occurrence once",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]},
+                {"days": [27], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T00:00:00+09:00", "through": "2026-07-27T23:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27T10:00:00+09:00"]}
+}
