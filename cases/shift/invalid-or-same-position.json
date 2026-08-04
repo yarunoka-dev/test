@@ -1,0 +1,21 @@
+{
+    "description": "or_same anywhere but the middle position is rejected - tuple elements are read by position",
+    "spec": "shift - the tuple is [direction, or_same?, landing condition]",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": [25], "shift": ["prev", "business_day", "or_same"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-06-25T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

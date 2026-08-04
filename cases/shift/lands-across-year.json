@@ -1,0 +1,21 @@
+{
+    "description": "The landing day is not bound by the axes - a December 31st holiday base lands on the first business day of the next year",
+    "spec": "shift - the landing day may move into an adjacent month or year",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2021-12-31"],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"months": [12], "days": [31], "shift": ["next", "or_same", "business_day"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2022-01-03T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}
