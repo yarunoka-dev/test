@@ -1,0 +1,16 @@
+{
+    "description": "A day-cycle tuple with an hour unit is rejected - the unit in the days position is the fixed day, and interval sequences are the top-level every",
+    "spec": "The day-cycle tuple - the unit is fixed and explicit (day)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "days": [["every", 2, "hour"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-14T03:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

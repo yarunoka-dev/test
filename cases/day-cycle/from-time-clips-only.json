@@ -1,0 +1,16 @@
+{
+    "description": "The time part of from clips the range without moving the phase - anchored 7/14 12:00 with times 03:00, the 7/14 point is out of range and the first point is 7/16 03:00",
+    "spec": "The day-cycle tuple - from is a validity start, not a recurrence condition",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 12:00", "days": [["every", 2, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-14T00:00:00+09:00", "through": "2026-07-17T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-16T03:00:00+09:00"]}
+}

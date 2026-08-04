@@ -1,0 +1,16 @@
+{
+    "description": "A day cycle with count 0 is rejected - the count is an integer of at least 1",
+    "spec": "The day-cycle tuple - the count is an integer >= 1",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "days": [["every", 0, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-14T03:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
