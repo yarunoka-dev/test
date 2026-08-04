@@ -1,0 +1,16 @@
+{
+    "description": "A date-only from is rejected - if omission meant 00:00 the same instant would have two spellings, so the top of a day writes 00:00 explicitly",
+    "spec": "from / until - the value has exactly one form (no date-only)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-15", "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

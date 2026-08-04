@@ -1,0 +1,16 @@
+{
+    "description": "An all-day occurrence is clipped by its day, not an instant - with from at noon of 7/14, the all-day occurrence of 7/14 stays, and matches an instant before the from",
+    "spec": "from / until - an all-day occurrence survives when its day overlaps the range at all",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 12:00", "days": [14], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-14T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

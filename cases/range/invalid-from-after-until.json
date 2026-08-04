@@ -1,0 +1,16 @@
+{
+    "description": "from after until is rejected - the resolved from must be strictly earlier",
+    "spec": "from / until - resolved from < until, strictly",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-15 10:00", "until": "2026-07-15 09:00", "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
