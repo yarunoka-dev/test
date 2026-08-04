@@ -1,0 +1,16 @@
+{
+    "description": "The spec example: the third Monday of every month at 10:00",
+    "spec": "Examples - the third Monday",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [["3rd", "mon"]], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-20T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

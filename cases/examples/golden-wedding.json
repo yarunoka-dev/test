@@ -1,0 +1,16 @@
+{
+    "description": "The spec example: a golden wedding - a one-off all-day event on one specific day",
+    "spec": "Examples - a golden wedding; Date axes - years make a one-off event expressible",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [2043], "months": [6], "days": [15], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2043-06-15T12:00:00Z"}
+    },
+    "response": {"result": true}
+}

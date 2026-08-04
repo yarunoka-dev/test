@@ -1,0 +1,19 @@
+{
+    "description": "A well-formed date that does not exist is rejected - February has no 30th",
+    "spec": "Constraints beyond the schema - every date literal is a real date",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-02-30"]
+            },
+            "schedules": [
+                {"days": ["holiday"], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

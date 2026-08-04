@@ -1,0 +1,16 @@
+{
+    "description": "Year 10000 is rejected - years run 1-9999",
+    "spec": "Document model - years run 1-9999 (above the upper boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [10000], "months": [1], "days": [1], "times": ["00:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-01-01T00:00:00Z"}
+    },
+    "response": {"invalid": true}
+}

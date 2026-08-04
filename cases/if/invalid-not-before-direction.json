@@ -1,0 +1,19 @@
+{
+    "description": "not before the direction is rejected - tuple elements are read by position, and the order is [direction, not, condition]",
+    "spec": "if - the element order is fixed",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-20"]
+            },
+            "schedules": [
+                {"days": ["mon"], "if": ["not", "next", "holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

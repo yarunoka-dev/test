@@ -1,0 +1,16 @@
+{
+    "description": "The point comparison is between instants, never wall-clock values - the same moment spelled in a different offset matches",
+    "spec": "Evaluation model - judgment at a point, instants not wall-clock values",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T01:00:00Z"}
+    },
+    "response": {"result": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "The day-cycle count has no upper bound - every 400 days anchored 2025-01-01 fires next on 2026-02-05",
+    "spec": "The day-cycle tuple - the count has no upper bound",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2025-01-01 00:00", "days": [["every", 400, "day"]], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-02-05T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

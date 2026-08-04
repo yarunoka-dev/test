@@ -1,0 +1,19 @@
+{
+    "description": "A filter does not reset the count - with 7/16 excluded by if, the cycle still fires on 7/18, its own phase",
+    "spec": "The day-cycle tuple - years / months / if only filter, the count is not reset",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-16"]
+            },
+            "schedules": [
+                {"from": "2026-07-14 00:00", "days": [["every", 2, "day"]], "if": ["not", "holiday"], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-14T00:00:00+09:00", "through": "2026-07-19T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-14T03:00:00+09:00", "2026-07-18T03:00:00+09:00"]}
+}

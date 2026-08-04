@@ -1,0 +1,16 @@
+{
+    "description": "The day unit in a top-level every is rejected - whole-day cycles belong to the days axis as the day-cycle tuple",
+    "spec": "every (directly on a schedule) - the unit day is invalid here",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "every": [2, "day"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-16T00:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

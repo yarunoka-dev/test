@@ -1,0 +1,19 @@
+{
+    "description": "Touching windows are legal - the shared boundary is excluded as the first window's end and included as the second window's anchor, so 12:00 fires",
+    "spec": "Constraints beyond the schema - half-open windows, touching is legal; times / allday - the grid anchors per window",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "business_hours": [["09:00", "12:00"], ["12:00", "15:00"]]
+            },
+            "schedules": [
+                {"days": [15], "times": {"every": [1, "hour"], "between": "business_hour"}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T12:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

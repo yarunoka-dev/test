@@ -1,0 +1,16 @@
+{
+    "description": "A wall time in a spring-forward gap is interpreted with the pre-transition offset and pushed forward - Berlin 02:30 in the 2021 gap stands at 03:30+02:00",
+    "spec": "Document model - gap resolution per RFC 5545 3.3.5",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"years": [2021], "months": [3], "days": [28], "times": ["02:30"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2021-03-28T03:30:00+02:00"}
+    },
+    "response": {"result": true}
+}

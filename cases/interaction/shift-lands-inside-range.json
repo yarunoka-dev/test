@@ -1,0 +1,21 @@
+{
+    "description": "A base day before the range whose landing falls inside produces an occurrence - the Sunday May 31st base lands on June 1st, inside a range that starts in June",
+    "spec": "shift - base selection is unaffected by the range; from / until - clipping is on the resulting points",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"from": "2026-06-01 00:00", "months": [5], "days": [31], "shift": ["next", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-06-01T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

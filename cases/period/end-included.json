@@ -1,0 +1,16 @@
+{
+    "description": "A point exactly at the period end counts in this judgment - the interval is (after, through]",
+    "spec": "Evaluation model - judgment over a period, (after, through]",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-27T08:00:00+09:00", "through": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

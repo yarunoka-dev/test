@@ -1,0 +1,16 @@
+{
+    "description": "An occurrence exactly at the enumeration end is part of the answer - the caller names both instants, unlike the period judgment",
+    "spec": "Evaluation model - enumeration, [a, b] closed",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T08:00:00+09:00", "through": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27T10:00:00+09:00"]}
+}

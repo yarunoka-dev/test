@@ -1,0 +1,18 @@
+{
+    "description": "A reserved word declared as a resolver name is rejected - a declared name is spelled like any other name",
+    "spec": "resolvers - name rules (no reserved words)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["mon"],
+            "schedules": [
+                {"days": ["mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"mon": ["2026-07-21"]}
+    },
+    "response": {"invalid": true}
+}

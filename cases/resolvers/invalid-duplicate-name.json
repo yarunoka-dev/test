@@ -1,0 +1,18 @@
+{
+    "description": "A resolver name declared twice is rejected - the declaration list is an enumeration, and enumerations reject duplicate members",
+    "spec": "resolvers - no duplicates; Document model - enumerations reject duplicate members",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["company-closures", "company-closures"],
+            "schedules": [
+                {"days": ["company-closures"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"company-closures": ["2026-07-21"]}
+    },
+    "response": {"invalid": true}
+}

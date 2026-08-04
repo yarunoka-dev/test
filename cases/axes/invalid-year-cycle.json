@@ -1,0 +1,16 @@
+{
+    "description": "A year cycle is rejected - the tuple has a syntactic home but the unit is not part of version 1.0",
+    "spec": "Deliberately unsupported - year cycles; The day-cycle tuple - the unit is the fixed day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-01-01 00:00", "days": [["every", 2, "year"]], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-01-01T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

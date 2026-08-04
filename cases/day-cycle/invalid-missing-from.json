@@ -1,0 +1,16 @@
+{
+    "description": "A day cycle without from is rejected - counting vocabulary has no way to start without its anchor",
+    "spec": "The day-cycle tuple - from is required; Constraints beyond the schema - presence of from",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [["every", 2, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-14T03:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

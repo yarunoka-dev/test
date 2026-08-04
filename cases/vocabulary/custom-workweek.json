@@ -1,0 +1,22 @@
+{
+    "description": "With a Tue-Sat workweek, a Saturday is a business day - the bottom layer sets the weekly default",
+    "spec": "Calendar vocabulary - the workweek layer sets the default",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": [],
+                "workweek": ["tue", "wed", "thu", "fri", "sat"]
+            },
+            "schedules": [
+                {"days": ["business_day"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-04T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

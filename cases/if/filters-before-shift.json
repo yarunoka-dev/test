@@ -1,0 +1,21 @@
+{
+    "description": "if filters the base days first, then shift moves what remains - a filtered-out 25th produces nothing, where the reverse order would land an occurrence on the 24th",
+    "spec": "if - combined with shift, if filters first",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-04-25"],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"months": [4], "days": [25], "if": ["not", "holiday"], "shift": ["prev", "or_same", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-04-24T10:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

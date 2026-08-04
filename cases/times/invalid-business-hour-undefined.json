@@ -1,0 +1,16 @@
+{
+    "description": "Using between business_hour without calendar.business_hours is rejected - never a silent no-match",
+    "spec": "times / allday - business_hour requires calendar.business_hours",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [1, "hour"], "between": "business_hour"}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

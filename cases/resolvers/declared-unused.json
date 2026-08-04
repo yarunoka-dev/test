@@ -1,0 +1,18 @@
+{
+    "description": "A declared name need not be used - the declaration states a dependency, and an unused one costs only a binding never asked for",
+    "spec": "resolvers - a declared name need not be used",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["company-closures"],
+            "schedules": [
+                {"days": ["mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"company-closures": ["2026-07-21"]}
+    },
+    "response": {"result": true}
+}

@@ -1,0 +1,28 @@
+{
+    "description": "A company calendar - the Saturday April 25th payday moves back to Friday the 24th",
+    "spec": "Examples - a realistic company document (shift over the layered calendar)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["jp-holidays"],
+            "calendar": {
+                "holidays": "jp-holidays",
+                "business_holidays": ["2026-01-02", "2026-01-03"],
+                "business_days": [],
+                "business_hours": [["09:00", "12:00"], ["13:00", "17:30"]],
+                "date_sets": {"closing-days": ["2026-03-31"]}
+            },
+            "schedules": [
+                {"days": ["business_day"], "times": {"every": [1, "hour"], "between": "business_hour"}},
+                {"days": [25], "shift": ["prev", "or_same", "business_day"], "times": ["10:00"]},
+                {"days": ["last_day_of_month"], "shift": ["prev", "or_same", "business_day"], "times": ["17:00"]},
+                {"days": ["closing-days"], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-04-24T10:00:00+09:00"},
+        "bindings": {"jp-holidays": ["2026-01-01", "2026-02-11", "2026-02-23", "2026-03-20", "2026-04-29", "2026-05-04", "2026-05-05", "2026-05-06", "2026-07-20"]}
+    },
+    "response": {"result": true}
+}

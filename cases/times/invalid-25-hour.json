@@ -1,0 +1,16 @@
+{
+    "description": "A 25-hour grid is rejected - the maximum count for hour is 24, one day's worth",
+    "spec": "times / allday - the grid count maximum (24 for hour)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [25, "hour"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

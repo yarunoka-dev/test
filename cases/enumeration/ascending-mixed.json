@@ -1,0 +1,17 @@
+{
+    "description": "The answer is in ascending order across kinds - a timed point the day before, then the all-day occurrence at the start of its day, then a timed point within it",
+    "spec": "Evaluation model - enumeration, ascending order with all-day at the start of its day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [28], "allday": true},
+                {"days": ["mon", "tue"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T00:00:00+09:00", "through": "2026-07-28T12:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27T09:00:00+09:00", "2026-07-28", "2026-07-28T09:00:00+09:00"]}
+}

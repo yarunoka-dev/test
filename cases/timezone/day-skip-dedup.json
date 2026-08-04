@@ -1,0 +1,16 @@
+{
+    "description": "Two calendar days whose starts resolve to the same instant are one occurrence - Apia's skipped 12-30 and the real 12-31 collapse into a single all-day occurrence",
+    "spec": "Document model - two calendar days whose starts resolve to the same instant are one occurrence",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Pacific/Apia",
+            "schedules": [
+                {"years": [2011], "months": [12], "days": [30, 31], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2011-12-29T00:00:00-10:00", "through": "2011-12-31T23:00:00+14:00"}
+    },
+    "response": {"result": ["2011-12-31"]}
+}

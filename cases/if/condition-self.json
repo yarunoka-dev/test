@@ -1,0 +1,16 @@
+{
+    "description": "An if without a direction asks about the day itself - Friday the 13th matches days [13] with if [fri]",
+    "spec": "if - [direction?, not?, condition], direction omitted = the day itself",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [13], "if": ["fri"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-02-13T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

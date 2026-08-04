@@ -1,0 +1,21 @@
+{
+    "description": "A collapsed landing day lays out each of its times once - two bases landing on the same Friday with two times give two occurrences, not four",
+    "spec": "shift - collapse into a single match; times / allday - times are laid on the resulting days",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"months": [7], "days": [18, 19], "shift": ["prev", "or_same", "business_day"], "times": ["10:00", "15:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-17T00:00:00+09:00", "through": "2026-07-20T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-17T10:00:00+09:00", "2026-07-17T15:00:00+09:00"]}
+}

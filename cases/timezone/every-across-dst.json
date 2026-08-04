@@ -1,0 +1,16 @@
+{
+    "description": "The interval sequence is wall-clock arithmetic - a 36-hour row crossing the Berlin spring transition keeps its wall times, and one step is really 35 hours",
+    "spec": "every (directly on a schedule) - wall-clock arithmetic, real elapsed time deviates at DST transitions",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"from": "2021-03-27 12:00", "until": "2021-03-31 00:00", "every": [36, "hour"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2021-03-27T12:00:00+01:00", "through": "2021-03-30T13:00:00+02:00"}
+    },
+    "response": {"result": ["2021-03-27T12:00:00+01:00", "2021-03-29T00:00:00+02:00", "2021-03-30T12:00:00+02:00"]}
+}

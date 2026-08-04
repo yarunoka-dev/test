@@ -1,0 +1,16 @@
+{
+    "description": "A fixed offset in the timezone field is rejected - the value is an IANA zone name, and a document anchored to UTC writes UTC",
+    "spec": "Document model - timezone is an IANA name, fixed offsets are not accepted",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "+09:00",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

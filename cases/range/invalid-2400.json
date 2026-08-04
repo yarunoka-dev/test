@@ -1,0 +1,16 @@
+{
+    "description": "24:00 in an until value is rejected - the token does not exist in this position, write the next day's 00:00",
+    "spec": "from / until - 24:00 does not exist in this position",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"until": "2026-07-15 24:00", "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

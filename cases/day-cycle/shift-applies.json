@@ -1,0 +1,21 @@
+{
+    "description": "shift moves a matching cycle day as a base day - the 7/18 Saturday of an every-4-days cycle lands on Monday 7/20, and the other cycle days stay",
+    "spec": "The day-cycle tuple - shift moves each matching day as a base day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"from": "2026-07-14 00:00", "days": [["every", 4, "day"]], "shift": ["next", "or_same", "business_day"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-14T00:00:00+09:00", "through": "2026-07-23T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-14T09:00:00+09:00", "2026-07-20T09:00:00+09:00", "2026-07-22T09:00:00+09:00"]}
+}

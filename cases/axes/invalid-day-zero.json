@@ -1,0 +1,16 @@
+{
+    "description": "Day 0 is rejected - day numbers run 1-31",
+    "spec": "Date axes - day numbers 1-31 (below the lower boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [0], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "Year 9999 is inside the supported range - the upper boundary on the valid side",
+    "spec": "Document model - years run 1-9999 (upper boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [9999], "months": [12], "days": [31], "times": ["23:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "9999-12-31T23:00:00Z"}
+    },
+    "response": {"result": true}
+}

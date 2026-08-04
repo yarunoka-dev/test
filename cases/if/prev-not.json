@@ -1,0 +1,19 @@
+{
+    "description": "The four-element reading [direction, not, condition] - a Monday whose previous day is a holiday fails prev-not-holiday and is filtered",
+    "spec": "if - the [direction, not, condition] form",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-12"]
+            },
+            "schedules": [
+                {"days": ["mon"], "if": ["prev", "not", "holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-13T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

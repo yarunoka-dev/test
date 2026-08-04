@@ -1,0 +1,19 @@
+{
+    "description": "A base day whose landing condition never holds produces no occurrences - shifting to the next holiday over an explicitly empty holidays list yields nothing, and the document stays valid",
+    "spec": "shift - a base day that finds nothing within 366 days produces no occurrences, not an invalid document",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": []
+            },
+            "schedules": [
+                {"days": [15], "shift": ["next", "holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2025-01-01T00:00:00+09:00", "through": "2025-12-31T00:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "A schedule with no axes has every day as its base - if [next, last_day_of_month] alone selects the day before the end of the month",
+    "spec": "if - with no date axes the base is every day; Date axes - the day before the end of the month",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"if": ["next", "last_day_of_month"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-30T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

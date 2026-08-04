@@ -1,0 +1,16 @@
+{
+    "description": "A point exactly at from is included - the range is [from, until)",
+    "spec": "from / until - a point at from is included",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-15 09:00", "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

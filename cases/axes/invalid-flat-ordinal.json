@@ -1,0 +1,16 @@
+{
+    "description": "An ordinal written flat into the days list is rejected - a tuple is always written as an element of the enumeration",
+    "spec": "Date axes - a tuple is always written as an element of the enumeration",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["3rd", "mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-20T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

@@ -1,0 +1,19 @@
+{
+    "description": "between business_hour uses the calendar's window list - an hourly grid anchors at 09:00 and again at 13:00, once per window",
+    "spec": "times / allday - business_hour is the window list of calendar.business_hours, anchored per window",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "business_hours": [["09:00", "12:00"], ["13:00", "18:00"]]
+            },
+            "schedules": [
+                {"days": [15], "times": {"every": [2, "hour"], "between": "business_hour"}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-15T00:00:00+09:00", "through": "2026-07-16T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-15T09:00:00+09:00", "2026-07-15T11:00:00+09:00", "2026-07-15T13:00:00+09:00", "2026-07-15T15:00:00+09:00", "2026-07-15T17:00:00+09:00"]}
+}

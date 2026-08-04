@@ -1,0 +1,20 @@
+{
+    "description": "Using business_holiday with only two of the three layers defined is rejected - business_days is missing, and the complement needs the same three layers",
+    "spec": "Calendar vocabulary - business words require all three layers (business_days missing)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-20"],
+                "business_holidays": []
+            },
+            "schedules": [
+                {"days": ["business_holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

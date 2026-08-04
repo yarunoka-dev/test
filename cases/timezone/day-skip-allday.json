@@ -1,0 +1,16 @@
+{
+    "description": "Where a zone skips a whole day, the all-day occurrence stands on the day that follows - Apia's 2011-12-30 does not exist, and the occurrence denotes 2011-12-31",
+    "spec": "Document model - an all-day occurrence stands at the start of its day, resolved like any wall-clock point",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Pacific/Apia",
+            "schedules": [
+                {"years": [2011], "months": [12], "days": [30], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2011-12-29T00:00:00-10:00", "through": "2011-12-31T23:00:00+14:00"}
+    },
+    "response": {"result": ["2011-12-31"]}
+}

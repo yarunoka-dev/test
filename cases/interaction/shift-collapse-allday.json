@@ -1,0 +1,21 @@
+{
+    "description": "Collapsed base days with allday produce one day-level occurrence - the day-level dedup mirrors the timed one",
+    "spec": "shift - collapse into a single match; Document model - within a kind the OR contains an occurrence once",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"months": [7], "days": [18, 19], "shift": ["prev", "or_same", "business_day"], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-16T00:00:00+09:00", "through": "2026-07-20T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-17"]}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "A top-level every without from is rejected - a sequence has no definition without its anchor",
+    "spec": "every (directly on a schedule) - from is required",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"every": [1, "hour"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

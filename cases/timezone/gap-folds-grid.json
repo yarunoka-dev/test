@@ -1,0 +1,16 @@
+{
+    "description": "When a gap folds several grid times onto one instant, the set contains that one point - a 30-minute grid over the Berlin gap yields 03:00 and 03:30 once each",
+    "spec": "times / allday - the grid resolves per RFC 5545 3.3.5, folded wall times count once",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"years": [2021], "months": [3], "days": [28], "times": {"every": [30, "minute"], "between": ["02:00", "04:00"]}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2021-03-28T00:00:00+01:00", "through": "2021-03-28T05:00:00+02:00"}
+    },
+    "response": {"result": ["2021-03-28T03:00:00+02:00", "2021-03-28T03:30:00+02:00"]}
+}

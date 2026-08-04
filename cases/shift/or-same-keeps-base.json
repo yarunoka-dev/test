@@ -1,0 +1,21 @@
+{
+    "description": "With or_same, displacement zero is tested first - a payday 25th that is already a business day stays on the 25th",
+    "spec": "shift - or_same is the inclusive meaning, displacement zero tested first",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"months": [6], "days": [25], "shift": ["prev", "or_same", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-06-25T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

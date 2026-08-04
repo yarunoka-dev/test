@@ -1,0 +1,16 @@
+{
+    "description": "The whole-day grid re-anchors every day - a 7-hour grid is 00:00, 07:00, 14:00, 21:00 and starts again at 00:00 the next day, carrying nothing over",
+    "spec": "times / allday - the grid is laid out per day, omitted between = the whole day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [15, 16], "times": {"every": [7, "hour"]}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-15T00:00:00+09:00", "through": "2026-07-16T07:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-15T00:00:00+09:00", "2026-07-15T07:00:00+09:00", "2026-07-15T14:00:00+09:00", "2026-07-15T21:00:00+09:00", "2026-07-16T00:00:00+09:00", "2026-07-16T07:00:00+09:00"]}
+}

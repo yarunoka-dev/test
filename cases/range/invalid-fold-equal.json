@@ -1,0 +1,16 @@
+{
+    "description": "Different wall spellings folded onto one instant by a gap are rejected as a range - from 02:00 and until 03:00 across the Berlin spring transition resolve to the same instant, and the comparison is between resolved instants",
+    "spec": "from / until - resolved from < until, compared as instants",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"from": "2021-03-28 02:00", "until": "2021-03-28 03:00", "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2021-03-28T09:00:00+02:00"}
+    },
+    "response": {"invalid": true}
+}

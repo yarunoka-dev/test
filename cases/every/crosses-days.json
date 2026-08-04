@@ -1,0 +1,16 @@
+{
+    "description": "The interval sequence keeps counting across days - every 36 hours from 7/14 00:00 is 7/14 00:00, 7/15 12:00, 7/17 00:00, with no per-day re-anchoring",
+    "spec": "every (directly on a schedule) - from + k x interval, counting across days",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "every": [36, "hour"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-14T00:00:00+09:00", "through": "2026-07-17T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-14T00:00:00+09:00", "2026-07-15T12:00:00+09:00", "2026-07-17T00:00:00+09:00"]}
+}

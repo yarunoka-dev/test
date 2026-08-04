@@ -1,0 +1,18 @@
+{
+    "description": "A date-shaped string declared as a resolver name is rejected - nothing shaped like a literal can be a name",
+    "spec": "resolvers - name rules (nothing shaped like a literal)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["2026-01-01"],
+            "schedules": [
+                {"days": ["mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"2026-01-01": ["2026-07-21"]}
+    },
+    "response": {"invalid": true}
+}

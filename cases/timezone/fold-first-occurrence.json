@@ -1,0 +1,16 @@
+{
+    "description": "A wall time in the fall-back overlap counts only as its first occurrence - the second 02:30 of the Berlin 2021 fold is not an occurrence",
+    "spec": "Document model - overlap resolution per RFC 5545 3.3.5 (first occurrence only)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"years": [2021], "months": [10], "days": [31], "times": ["02:30"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2021-10-31T02:30:00+01:00"}
+    },
+    "response": {"result": false}
+}

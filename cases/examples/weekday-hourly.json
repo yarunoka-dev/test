@@ -1,0 +1,16 @@
+{
+    "description": "The spec example: Mon-Fri, hourly from 8:00 until 20:00",
+    "spec": "Examples - the weekday hourly grid",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "times": {"every": [1, "hour"], "between": ["08:00", "20:00"]}}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-15T08:00:00+09:00", "through": "2026-07-15T11:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-15T08:00:00+09:00", "2026-07-15T09:00:00+09:00", "2026-07-15T10:00:00+09:00", "2026-07-15T11:00:00+09:00"]}
+}

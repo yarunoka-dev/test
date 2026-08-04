@@ -1,0 +1,19 @@
+{
+    "description": "A bare date-shaped string in a date-list position is rejected - it is neither an array nor a name, and is not read as a one-date list",
+    "spec": "calendar - a date-list position accepts exactly two forms (an array, or a name)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": "2026-01-01"
+            },
+            "schedules": [
+                {"days": ["holiday"], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

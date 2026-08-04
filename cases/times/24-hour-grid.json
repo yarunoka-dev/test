@@ -1,0 +1,16 @@
+{
+    "description": "A 24-hour grid is the maximum on the valid side - one point per day, at the window start",
+    "spec": "times / allday - the grid count maximum (valid boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [24, "hour"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

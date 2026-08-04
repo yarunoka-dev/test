@@ -1,0 +1,21 @@
+{
+    "description": "A built-in definition referring to a resolver-backed name - the name resolves outside the document and the holiday vocabulary sees the bound dates",
+    "spec": "calendar - name references; a name is resolved inside or outside the document, written the same way",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["yasumi-jp"],
+            "calendar": {
+                "holidays": "yasumi-jp"
+            },
+            "schedules": [
+                {"days": ["holiday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-20T09:00:00+09:00"},
+        "bindings": {"yasumi-jp": ["2026-07-20"]}
+    },
+    "response": {"result": true}
+}

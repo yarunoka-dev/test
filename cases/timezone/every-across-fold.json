@@ -1,0 +1,16 @@
+{
+    "description": "The wall-clock row is unchanged across a fall-back transition - a 36-hour step over the Berlin fold is really 37 hours, keeping its wall times",
+    "spec": "every (directly on a schedule) - wall-clock arithmetic, real elapsed time deviates at DST transitions",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"from": "2021-10-30 12:00", "until": "2021-11-02 00:00", "every": [36, "hour"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2021-10-30T12:00:00+02:00", "through": "2021-11-01T01:00:00+01:00"}
+    },
+    "response": {"result": ["2021-10-30T12:00:00+02:00", "2021-11-01T00:00:00+01:00"]}
+}

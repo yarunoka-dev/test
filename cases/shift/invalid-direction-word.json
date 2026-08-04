@@ -1,0 +1,21 @@
+{
+    "description": "A direction word other than prev or next is rejected",
+    "spec": "shift - direction is prev | next",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": [25], "shift": ["forward", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-06-25T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

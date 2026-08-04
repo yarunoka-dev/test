@@ -1,0 +1,21 @@
+{
+    "description": "A name that is both a date_sets entry and a declared resolver is rejected - all names share one namespace, and a name is defined or left to the host, never both",
+    "spec": "resolvers - a declared name must not collide with a date_sets key",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["founding-day"],
+            "calendar": {
+                "date_sets": {"founding-day": ["2026-10-01"]}
+            },
+            "schedules": [
+                {"days": ["founding-day"], "allday": true}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"},
+        "bindings": {"founding-day": ["2026-10-01"]}
+    },
+    "response": {"invalid": true}
+}
