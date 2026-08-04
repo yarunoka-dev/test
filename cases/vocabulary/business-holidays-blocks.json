@@ -1,0 +1,21 @@
+{
+    "description": "A weekday in business_holidays is not a business day - the organization's own closure blocks the weekly default",
+    "spec": "Calendar vocabulary - the decision procedure, business_holidays before the workweek",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": ["2026-07-01"],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": ["business_day"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-01T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

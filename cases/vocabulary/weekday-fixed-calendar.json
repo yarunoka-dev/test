@@ -1,0 +1,19 @@
+{
+    "description": "weekday asks the fixed calendar - with a Tue-Sat workweek a Monday is still a weekday, workweek plays no part",
+    "spec": "Calendar vocabulary - weekday / weekend ask the fixed calendar",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "workweek": ["tue", "wed", "thu", "fri", "sat"]
+            },
+            "schedules": [
+                {"days": ["weekday"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-06T09:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

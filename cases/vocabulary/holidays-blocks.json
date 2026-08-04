@@ -1,0 +1,21 @@
+{
+    "description": "A public holiday on a Monday is not a business day - the holidays layer blocks the weekly default",
+    "spec": "Calendar vocabulary - the decision procedure, holidays before the workweek",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-20"],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": ["business_day"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-20T09:00:00+09:00"}
+    },
+    "response": {"result": false}
+}
