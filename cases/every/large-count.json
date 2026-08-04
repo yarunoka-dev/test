@@ -1,0 +1,16 @@
+{
+    "description": "The sequence count has no upper bound and lands on non-zero seconds - 100000 seconds after 7/14 00:00 is 7/15 03:46:40",
+    "spec": "every (directly on a schedule) - the count has no upper bound",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "every": [100000, "second"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T03:46:40+09:00"}
+    },
+    "response": {"result": true}
+}

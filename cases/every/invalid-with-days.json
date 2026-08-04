@@ -1,0 +1,16 @@
+{
+    "description": "A top-level every combined with a date axis is rejected - a sequence of points takes no date axes",
+    "spec": "every (directly on a schedule) - cannot be combined with the date axes",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "days": ["mon"], "every": [1, "hour"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "until clips the sequence to [from, until) - an hourly sequence until 13:00 does not fire at 13:00",
+    "spec": "every (directly on a schedule) - until clips [from, until)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-15 10:00", "until": "2026-07-15 13:00", "every": [1, "hour"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T13:00:00+09:00"}
+    },
+    "response": {"result": false}
+}
