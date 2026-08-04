@@ -47,7 +47,9 @@ cannot special-case one.
 
 Query instants are **ISO 8601 with a UTC offset** (RFC 3339), never a
 zone name: the wire carries moments, and the tz-database name's job is
-done by the document's own `timezone` declaration.
+done by the document's own `timezone` declaration. A query instant may
+carry fractional seconds; the semantics ignore anything finer than a
+second.
 
 ## Response
 
