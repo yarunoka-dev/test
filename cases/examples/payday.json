@@ -1,0 +1,21 @@
+{
+    "description": "The spec example: payday on the 25th, moved to the previous business day on days off - the Saturday 25th pays on Friday the 24th",
+    "spec": "Examples - payday",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-20"],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": [25], "shift": ["prev", "or_same", "business_day"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-24T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

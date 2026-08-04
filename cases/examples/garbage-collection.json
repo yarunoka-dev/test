@@ -1,0 +1,19 @@
+{
+    "description": "The spec example: garbage collection on the 1st and 3rd Friday, skipped on holidays - the first Friday of May 2026 is a holiday and is skipped without moving",
+    "spec": "Examples - garbage collection",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-05-01"]
+            },
+            "schedules": [
+                {"days": [["1st", "fri"], ["3rd", "fri"]], "if": ["not", "holiday"], "times": ["07:30"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-05-01T07:30:00+09:00"}
+    },
+    "response": {"result": false}
+}

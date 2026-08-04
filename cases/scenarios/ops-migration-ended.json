@@ -1,0 +1,21 @@
+{
+    "description": "An operations document - the daily migration job stops at its until, and April 2nd 03:00 is quiet",
+    "spec": "Examples - a realistic operations document (a transition period bounded by until)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "calendar": {
+                "business_hours": [["08:00", "20:00"]]
+            },
+            "schedules": [
+                {"from": "2026-03-01 00:00", "every": [36, "hour"]},
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "times": {"every": [15, "minute"], "between": "business_hour"}},
+                {"from": "2026-03-01 00:00", "until": "2026-04-01 00:00", "days": [["every", 1, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-04-02T03:00:00Z"}
+    },
+    "response": {"result": false}
+}

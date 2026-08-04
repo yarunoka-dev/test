@@ -1,0 +1,21 @@
+{
+    "description": "An operations document - the 36-hour batch anchored March 1st runs at noon on March 2nd",
+    "spec": "Examples - a realistic operations document (an interval sequence)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "calendar": {
+                "business_hours": [["08:00", "20:00"]]
+            },
+            "schedules": [
+                {"from": "2026-03-01 00:00", "every": [36, "hour"]},
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "times": {"every": [15, "minute"], "between": "business_hour"}},
+                {"from": "2026-03-01 00:00", "until": "2026-04-01 00:00", "days": [["every", 1, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-03-02T12:00:00Z"}
+    },
+    "response": {"result": true}
+}

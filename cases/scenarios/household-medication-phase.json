@@ -1,0 +1,23 @@
+{
+    "description": "A household calendar - the every-other-day medication anchored May 1st does not fall on June 1st, the phase carrying across the 31-day month",
+    "spec": "Examples - a realistic household document (day-cycle phase across a month boundary)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-01-01", "2026-05-05", "2026-07-20"],
+                "date_sets": {"anniversary": ["2026-06-10"]}
+            },
+            "schedules": [
+                {"days": [["1st", "tue"], ["3rd", "tue"]], "if": ["not", "holiday"], "times": ["07:30"]},
+                {"from": "2026-05-01 00:00", "days": [["every", 2, "day"]], "times": ["08:00", "20:00"]},
+                {"days": ["anniversary"], "allday": true},
+                {"days": ["sun"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-06-01T00:00:00+09:00", "through": "2026-06-01T23:59:00+09:00"}
+    },
+    "response": {"result": false}
+}

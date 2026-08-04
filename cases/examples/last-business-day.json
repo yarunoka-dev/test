@@ -1,0 +1,21 @@
+{
+    "description": "The spec example: the last business day of the month at 17:00 - May 2026 ends on a Sunday and closes on Friday the 29th",
+    "spec": "Examples - the last business day of the month",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": ["last_day_of_month"], "shift": ["prev", "or_same", "business_day"], "times": ["17:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-05-29T17:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

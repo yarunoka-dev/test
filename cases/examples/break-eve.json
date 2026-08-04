@@ -1,0 +1,21 @@
+{
+    "description": "The spec example: 8:00 on the day before a break - the last business day before closed days",
+    "spec": "Examples - the day before a break",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": [],
+                "business_holidays": [],
+                "business_days": []
+            },
+            "schedules": [
+                {"days": ["business_day"], "if": ["next", "business_holiday"], "times": ["08:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-03T08:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

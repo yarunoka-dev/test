@@ -1,0 +1,23 @@
+{
+    "description": "A household calendar - garbage goes out on the first Tuesday of July at 7:30",
+    "spec": "Examples - a realistic household document (ordinal days with a holiday filter)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-01-01", "2026-05-05", "2026-07-20"],
+                "date_sets": {"anniversary": ["2026-06-10"]}
+            },
+            "schedules": [
+                {"days": [["1st", "tue"], ["3rd", "tue"]], "if": ["not", "holiday"], "times": ["07:30"]},
+                {"from": "2026-05-01 00:00", "days": [["every", 2, "day"]], "times": ["08:00", "20:00"]},
+                {"days": ["anniversary"], "allday": true},
+                {"days": ["sun"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-07T07:30:00+09:00"}
+    },
+    "response": {"result": true}
+}

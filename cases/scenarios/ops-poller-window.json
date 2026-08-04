@@ -1,0 +1,21 @@
+{
+    "description": "An operations document - the 15-minute poller inside its business-hour window over the first hour of a Monday",
+    "spec": "Examples - a realistic operations document (a minute grid in a window)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "calendar": {
+                "business_hours": [["08:00", "20:00"]]
+            },
+            "schedules": [
+                {"from": "2026-03-01 00:00", "every": [36, "hour"]},
+                {"days": ["mon", "tue", "wed", "thu", "fri"], "times": {"every": [15, "minute"], "between": "business_hour"}},
+                {"from": "2026-03-01 00:00", "until": "2026-04-01 00:00", "days": [["every", 1, "day"]], "times": ["03:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-03-02T08:00:00Z", "through": "2026-03-02T09:00:00Z"}
+    },
+    "response": {"result": ["2026-03-02T08:00:00Z", "2026-03-02T08:15:00Z", "2026-03-02T08:30:00Z", "2026-03-02T08:45:00Z", "2026-03-02T09:00:00Z"]}
+}
