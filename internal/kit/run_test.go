@@ -34,7 +34,7 @@ func loaded(t *testing.T) []Case {
 		{
 			Name:        "point/timed-exact-instant",
 			Description: "A timed occurrence matches its exact instant",
-			Request:     Request{Action: "eval", Document: json.RawMessage(`{"version": "1.0"}`), Query: &Query{Type: "point", At: "2026-07-27T10:00:00+09:00"}},
+			Request:     Request{Action: "eval", Document: json.RawMessage(`{"version": "1.0"}`), Query: &Query{Type: "point", At: "2026-07-27T10:00:00+09:00"}, Bindings: map[string][]string{"company-closures": {"2026-08-05"}}},
 			Expected:    Response{Result: json.RawMessage(`true`)},
 		},
 	}
@@ -81,12 +81,18 @@ func TestRunEmitDerivesRoundTripsFromTheSameCases(t *testing.T) {
 	if outcomes[0].Status != StatusPass || outcomes[1].Status != StatusFail {
 		t.Fatalf("unexpected statuses: %+v", outcomes)
 	}
-	for _, req := range adapter.requests {
+	for i, req := range adapter.requests {
 		if req.Action != "emit" {
 			t.Errorf("emit mode must send emit requests: %+v", req)
 		}
-		if req.Query != nil || req.Bindings != nil {
-			t.Errorf("an emit request carries the document alone: %+v", req)
+		if req.Query != nil {
+			t.Errorf("an emit request carries no query: %+v", req)
+		}
+		// Bindings ride along: parsing a document that declares resolvers
+		// needs them (an unbound declared name is a validation error), and
+		// emit starts with a parse.
+		if want := cases[i].Request.Bindings; len(want) != len(req.Bindings) {
+			t.Errorf("an emit request must keep the case's bindings: %+v", req)
 		}
 	}
 }

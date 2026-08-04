@@ -51,10 +51,18 @@ func Run(cases []Case, adapter asker, mode Mode) []Outcome {
 	}
 	if mode == ModeEmit || mode == ModeAll {
 		for _, c := range cases {
-			outcomes = append(outcomes, judge(c, ModeEmit, adapter, Request{Action: "emit", Document: c.Request.Document}))
+			outcomes = append(outcomes, judge(c, ModeEmit, adapter, emitRequest(c)))
 		}
 	}
 	return outcomes
+}
+
+// emitRequest derives the round-trip request from an authored case: the
+// document without the query, keeping the bindings — parsing a document
+// that declares resolvers needs them (an unbound declared name is a
+// validation error), and emit starts with a parse.
+func emitRequest(c Case) Request {
+	return Request{Action: "emit", Document: c.Request.Document, Bindings: c.Request.Bindings}
 }
 
 func judge(c Case, mode Mode, adapter asker, req Request) Outcome {

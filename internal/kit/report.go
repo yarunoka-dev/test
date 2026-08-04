@@ -69,7 +69,7 @@ func AllPassed(outcomes []Outcome) bool {
 func sentRequest(o Outcome) string {
 	req := o.Case.Request
 	if o.Mode == ModeEmit {
-		req = Request{Action: "emit", Document: o.Case.Request.Document}
+		req = emitRequest(o.Case)
 	}
 	sent, err := json.Marshal(req)
 	if err != nil {
