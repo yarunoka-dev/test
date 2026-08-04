@@ -1,0 +1,17 @@
+{
+    "description": "An unknown key at the document level is rejected - the key set is closed",
+    "spec": "Document model - unknown keys are an error",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "note": "closed sets reject what they do not know",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

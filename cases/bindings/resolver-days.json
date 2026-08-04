@@ -1,0 +1,18 @@
+{
+    "description": "A resolver-backed name resolves to the supplied bindings, passed through by the adapter untouched",
+    "spec": "resolvers - what the document leaves to its host",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "resolvers": ["company-closures"],
+            "schedules": [
+                {"days": ["company-closures"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-08-05T09:00:00+09:00"},
+        "bindings": {"company-closures": ["2026-08-05"]}
+    },
+    "response": {"result": true}
+}
