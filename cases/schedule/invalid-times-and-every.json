@@ -1,0 +1,16 @@
+{
+    "description": "A schedule with both times and a top-level every is rejected - the time part is exactly one of the three forms",
+    "spec": "Schedule - exactly one of times | allday | every is required; every - mutually exclusive with times / allday",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-01 00:00", "times": ["10:00"], "every": [1, "hour"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

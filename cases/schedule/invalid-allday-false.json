@@ -1,0 +1,16 @@
+{
+    "description": "allday written as false is rejected - the only value is true, and a schedule that is not all-day omits the key",
+    "spec": "times / allday - allday is the constant true",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "allday": false}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
