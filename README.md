@@ -12,9 +12,9 @@ embedded case against the adapter, judges the answers, and reports what
 failed and why. See [docs/protocol.md](docs/protocol.md) for the
 adapter contract.
 
-> **Status**: pre-release. The runner works, but the embedded cases are
-> a small smoke set; the authored coverage that a release can claim
-> conformance against is still being written.
+> **Status**: 0.x. The authored case set for spec 1.0 is complete and
+> embedded. A kit 1.0 waits on a schema fix the spec has pending, which
+> one authored case anticipates.
 
 ## Usage
 
