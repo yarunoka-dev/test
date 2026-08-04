@@ -1,0 +1,16 @@
+{
+    "description": "24:00 in a times list is rejected - the token is allowed only as a window end, and midnight is the next day's 00:00",
+    "spec": "times / allday - 24:00 is a token allowed only as a window end",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["24:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

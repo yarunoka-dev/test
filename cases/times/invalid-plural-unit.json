@@ -1,0 +1,16 @@
+{
+    "description": "A plural unit is rejected - the unit is singular and fixed",
+    "spec": "times / allday - the grid unit is hour | minute | second, singular",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [2, "hours"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "An 86401-second grid is rejected - the maximum count for second is 86400, one day's worth",
+    "spec": "times / allday - the grid count maximum (86400 for second)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [86401, "second"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

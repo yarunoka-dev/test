@@ -1,0 +1,16 @@
+{
+    "description": "A zero-length window is rejected - start must be strictly before end",
+    "spec": "Constraints beyond the schema - start < end for every time window",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [1, "hour"], "between": ["09:00", "09:00"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

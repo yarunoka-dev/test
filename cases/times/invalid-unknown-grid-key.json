@@ -1,0 +1,16 @@
+{
+    "description": "An unknown key in the grid object is rejected - the key set is closed at the times level too",
+    "spec": "Document model - unknown keys are an error (times level)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [1, "hour"], "anchor": "08:00"}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

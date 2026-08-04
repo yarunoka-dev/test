@@ -1,0 +1,16 @@
+{
+    "description": "A 1441-minute grid is rejected - the maximum count for minute is 1440, one day's worth",
+    "spec": "times / allday - the grid count maximum (1440 for minute)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [1441, "minute"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

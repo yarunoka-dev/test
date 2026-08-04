@@ -1,0 +1,16 @@
+{
+    "description": "between is the half-open interval [start, end) - hourly from 8:00 until 20:00 does not fire at 20:00",
+    "spec": "times / allday - between is half-open, the end is excluded",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["wed"], "times": {"every": [1, "hour"], "between": ["08:00", "20:00"]}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-15T20:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

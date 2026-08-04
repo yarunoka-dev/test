@@ -1,0 +1,16 @@
+{
+    "description": "A between value that is neither a window pair nor business_hour is rejected",
+    "spec": "times / allday - between is a window pair or business_hour",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": {"every": [1, "hour"], "between": "morning"}}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T09:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}
