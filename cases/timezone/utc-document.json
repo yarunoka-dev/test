@@ -1,0 +1,16 @@
+{
+    "description": "UTC is a valid zone name - a document anchored to UTC writes it as the name",
+    "spec": "Document model - timezone (UTC is written as the name)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "UTC",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00Z"}
+    },
+    "response": {"result": true}
+}
