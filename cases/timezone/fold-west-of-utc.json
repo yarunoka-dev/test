@@ -1,0 +1,16 @@
+{
+    "description": "A wall time in the fall-back overlap counts only as its first occurrence west of UTC too - ambiguous-time resolution can err on one side of UTC only, so the New York fold pins the side the Berlin cases do not",
+    "spec": "Document model - overlap resolution per RFC 5545 3.3.5 (first occurrence only)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "America/New_York",
+            "schedules": [
+                {"years": [2026], "months": [11], "days": [1], "times": ["01:30"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-11-01T01:30:00-05:00"}
+    },
+    "response": {"result": false}
+}

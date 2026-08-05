@@ -1,0 +1,16 @@
+{
+    "description": "A from at a repeated wall time resolves to its first occurrence - 02:30 in the Berlin 2021 fold means the first 02:30 (+02:00), and the 02:30 occurrence sits exactly at the resolved from, included",
+    "spec": "from / until - a boundary on a transition resolves by the same rule as scheduled points (overlap: first occurrence)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"from": "2021-10-31 02:30", "years": [2021], "months": [10], "days": [31], "times": ["02:30"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2021-10-31T02:30:00+02:00"}
+    },
+    "response": {"result": true}
+}

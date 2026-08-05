@@ -1,0 +1,16 @@
+{
+    "description": "A period between the two passes of a folded wall time holds no point - the 02:30 point stands at the first occurrence, so nothing lies in (first 02:30, second 02:30]",
+    "spec": "Evaluation model - judgment over a period, (after, through]; overlap resolution per RFC 5545 3.3.5",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Europe/Berlin",
+            "schedules": [
+                {"years": [2021], "months": [10], "days": [31], "times": ["02:30"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2021-10-31T02:30:00+02:00", "through": "2021-10-31T02:30:00+01:00"}
+    },
+    "response": {"result": false}
+}
