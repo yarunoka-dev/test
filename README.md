@@ -1,6 +1,6 @@
 # yarunoka-test
 
-The conformance test kit for [Yrnk](https://github.com/yarunoka-dev/spec),
+The conformance test kit for [Yrnk](https://github.com/yarunoka-dev/spec/tree/1.0),
 the Yarunoka schedule DSL: the authored conformance cases and the runner
 that judges them, in one binary.
 
