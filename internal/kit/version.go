@@ -1,9 +1,10 @@
 package kit
 
 // KitVersion is the version of this kit build, stamped into the pasteable
-// summary. The dev value marks unreleased builds; releases set the real
-// number here.
-const KitVersion = "0.1.1"
+// summary. Its x.y is the spec version the embedded cases target (the kit
+// is the one binary that carries them, so the case set decides the number);
+// the last digit counts the kit's own fixes within that target.
+const KitVersion = "1.0.0"
 
 // SpecVersion is the spec version this kit's cases are authored against.
 // The declaration and the summary output are the same constant, so the

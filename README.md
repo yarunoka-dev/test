@@ -12,9 +12,9 @@ embedded case against the adapter, judges the answers, and reports what
 failed and why. See [docs/protocol.md](docs/protocol.md) for the
 adapter contract.
 
-> **Status**: 0.x. The authored case set for spec 1.0 is complete and
-> embedded. A kit 1.0 waits on a schema fix the spec has pending, which
-> one authored case anticipates.
+> **Versioning**: the kit's version tracks the spec version its embedded
+> cases target — v1.0.z carries the authored case set for spec 1.0, and
+> the last digit counts the kit's own fixes within that target.
 
 ## Usage
 
