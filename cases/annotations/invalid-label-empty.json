@@ -1,0 +1,29 @@
+{
+    "description": "An empty label is rejected - no annotation is spelled by omitting the key",
+    "spec": "Annotations - no annotation is spelled by omitting the key",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {
+                    "label": "",
+                    "days": [
+                        "mon"
+                    ],
+                    "times": [
+                        "10:00"
+                    ]
+                }
+            ]
+        },
+        "query": {
+            "type": "point",
+            "at": "2026-07-27T10:00:00+09:00"
+        }
+    },
+    "response": {
+        "invalid": true
+    }
+}

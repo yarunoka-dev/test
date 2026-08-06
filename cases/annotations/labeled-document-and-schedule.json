@@ -1,0 +1,32 @@
+{
+    "description": "Annotations at both levels are accepted and change nothing - the schedule fires as if they were absent",
+    "spec": "Annotations - label and description",
+    "request": {
+        "action": "eval",
+        "document": {
+            "label": "Company calendar",
+            "description": "Weekly standup rules.\nMaintained by the ops team.",
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {
+                    "label": "Monday standup",
+                    "description": "Every Monday at ten.",
+                    "days": [
+                        "mon"
+                    ],
+                    "times": [
+                        "10:00"
+                    ]
+                }
+            ]
+        },
+        "query": {
+            "type": "point",
+            "at": "2026-07-27T10:00:00+09:00"
+        }
+    },
+    "response": {
+        "result": true
+    }
+}

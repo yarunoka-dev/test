@@ -1,0 +1,29 @@
+{
+    "description": "A labeled schedule answers false at a non-matching instant exactly like a bare one - the label plays no part",
+    "spec": "Annotations - annotations are inert",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {
+                    "label": "Monday standup",
+                    "days": [
+                        "mon"
+                    ],
+                    "times": [
+                        "10:00"
+                    ]
+                }
+            ]
+        },
+        "query": {
+            "type": "point",
+            "at": "2026-07-27T11:00:00+09:00"
+        }
+    },
+    "response": {
+        "result": false
+    }
+}

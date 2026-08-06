@@ -1,0 +1,28 @@
+{
+    "description": "description joined the reserved words - a day atom cannot take it",
+    "spec": "Date axes - a name reference must not be a reserved word",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {
+                    "days": [
+                        "description"
+                    ],
+                    "times": [
+                        "10:00"
+                    ]
+                }
+            ]
+        },
+        "query": {
+            "type": "point",
+            "at": "2026-07-27T10:00:00+09:00"
+        }
+    },
+    "response": {
+        "invalid": true
+    }
+}

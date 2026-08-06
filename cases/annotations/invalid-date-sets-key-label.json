@@ -1,0 +1,35 @@
+{
+    "description": "label joined the reserved words - a date_sets key cannot take it",
+    "spec": "calendar - a date_sets key follows the rules every name follows",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {
+                    "days": [
+                        "mon"
+                    ],
+                    "times": [
+                        "10:00"
+                    ]
+                }
+            ],
+            "calendar": {
+                "date_sets": {
+                    "label": [
+                        "2026-10-01"
+                    ]
+                }
+            }
+        },
+        "query": {
+            "type": "point",
+            "at": "2026-07-27T10:00:00+09:00"
+        }
+    },
+    "response": {
+        "invalid": true
+    }
+}
