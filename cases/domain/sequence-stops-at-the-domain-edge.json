@@ -1,0 +1,16 @@
+{
+    "description": "A minute sequence anchored at 9999-12-31 23:59 generates that one point and ends - the next point would fall on a day past 9999-12-31, and the row ends at the date domain instead of continuing (the query endpoint beyond the domain is cut to its bound)",
+    "spec": "Evaluation model - the date domain; a recurrence generates only its intersection with the domain",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Etc/GMT-14",
+            "schedules": [
+                {"from": "9999-12-31 23:59", "every": [1, "minute"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "9999-12-31T09:50:00Z", "through": "9999-12-31T12:00:00Z"}
+    },
+    "response": {"result": ["9999-12-31T23:59:00+14:00"]}
+}

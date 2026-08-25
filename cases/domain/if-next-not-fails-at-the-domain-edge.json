@@ -1,0 +1,16 @@
+{
+    "description": "The guard fails before not applies - the day after 9999-12-31 is outside the date domain, and no-such-day is not a falsehood for not to turn into a match, so next-not-mon does not hold either",
+    "spec": "Evaluation model - the date domain; the neighbour guard fails before not applies",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [9999], "months": [12], "days": [31], "if": ["next", "not", "mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "9999-12-31T09:00:00Z"}
+    },
+    "response": {"result": false}
+}

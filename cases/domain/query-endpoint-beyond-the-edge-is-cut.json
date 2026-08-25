@@ -1,0 +1,16 @@
+{
+    "description": "A query overlapping the date domain with one endpoint beyond it is cut to the bound - the overlap covers the last hour of 9999-12-31 local, so the answer is that day's all-day occurrence and nothing from beyond the domain",
+    "spec": "Evaluation model - the date domain; only when the query overlaps the domain does an endpoint beyond a bound move to that bound",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Etc/GMT-14",
+            "schedules": [
+                {"allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "9999-12-31T09:00:00Z", "through": "9999-12-31T12:00:00Z"}
+    },
+    "response": {"result": ["9999-12-31"]}
+}

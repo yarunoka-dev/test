@@ -1,0 +1,16 @@
+{
+    "description": "An if whose prev neighbour lies outside the date domain fails the guard at the lower end too - the day before 0001-01-01 would be a Sunday, but there is no such day to test, so prev-sun does not hold",
+    "spec": "Evaluation model - the date domain; an if whose prev / next neighbour lies outside the domain fails the whole guard",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [1], "months": [1], "days": [1], "if": ["prev", "sun"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "0001-01-01T09:00:00Z"}
+    },
+    "response": {"result": false}
+}

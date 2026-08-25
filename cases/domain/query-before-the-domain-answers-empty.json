@@ -1,0 +1,16 @@
+{
+    "description": "A query lying entirely before the date domain answers empty, never an error - in a UTC-12 zone the domain starts at the instant of 0001-01-01 00:00 local, and both endpoints lie before it",
+    "spec": "Evaluation model - the date domain; a query lying entirely outside the domain answers empty",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Etc/GMT+12",
+            "schedules": [
+                {"allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "0001-01-01T00:00:00Z", "through": "0001-01-01T06:00:00Z"}
+    },
+    "response": {"result": []}
+}
