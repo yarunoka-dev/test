@@ -1,0 +1,16 @@
+{
+    "description": "A shift searching backwards out of the date domain finds no landing - the day before 0001-01-01 would be a Sunday, but the search stops at the domain's lower edge and the base day produces no occurrences",
+    "spec": "Evaluation model - the date domain; a shift whose search leaves the domain finds no landing",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [1], "months": [1], "days": [1], "shift": ["prev", "sun"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "0001-01-01T00:00:00Z", "through": "0001-01-31T23:59:59Z"}
+    },
+    "response": {"result": false}
+}
