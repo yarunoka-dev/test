@@ -1,0 +1,16 @@
+{
+    "description": "A day-cycle count beyond the 1.1 bound stays valid in a document declaring 1.0, where counts have no upper bound - under the closed date domain the second matching day falls outside it, so the year enumerates the anchor day alone",
+    "spec": "Versioning - a restriction introduced by a later version never rejects an older document; Correspondence between 1.0 and 1.1 - a count beyond its bound yields the anchor point alone",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-01-01 00:00", "days": [["every", 3652059, "day"]], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-01-01T00:00:00+09:00", "through": "2026-12-31T23:59:59+09:00"}
+    },
+    "response": {"result": ["2026-01-01T09:00:00+09:00"]}
+}

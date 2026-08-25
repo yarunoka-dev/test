@@ -1,0 +1,16 @@
+{
+    "description": "A sequence count beyond the 1.1 bound stays valid in a document declaring 1.0 - the second point falls outside the date domain, so the row holds the anchor point alone",
+    "spec": "Versioning - a restriction introduced by a later version never rejects an older document; Correspondence between 1.0 and 1.1 - a count beyond its bound yields the anchor point alone",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "every": [315537897600, "second"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-14T00:00:00+09:00", "through": "2026-07-15T00:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-14T00:00:00+09:00"]}
+}
