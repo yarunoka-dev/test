@@ -1,6 +1,6 @@
 {
     "description": "A declared name the host does not bind is rejected - every declared name must be bound",
-    "spec": "Constraints beyond the schema - every declared name is bound by the host",
+    "spec": "resolvers - implementations validate that the host binds every declared name",
     "request": {
         "action": "eval",
         "document": {

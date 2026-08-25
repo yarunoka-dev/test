@@ -1,6 +1,6 @@
 {
     "description": "Touching windows are legal - the shared boundary is excluded as the first window's end and included as the second window's anchor, so 12:00 fires",
-    "spec": "Constraints beyond the schema - half-open windows, touching is legal; times / allday - the grid anchors per window",
+    "spec": "times / allday - the windows must not overlap (half-open, so touching is legal); the grid anchors per window",
     "request": {
         "action": "eval",
         "document": {

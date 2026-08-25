@@ -1,6 +1,6 @@
 {
     "description": "A leap day in a leap year is a real date - the all-day occurrence stands on 2024-02-29",
-    "spec": "Constraints beyond the schema - every date literal is a real date (leap day, valid side)",
+    "spec": "Document model - every date literal must denote a real date (leap day, valid side)",
     "request": {
         "action": "eval",
         "document": {

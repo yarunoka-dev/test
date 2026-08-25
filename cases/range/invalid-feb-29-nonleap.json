@@ -1,6 +1,6 @@
 {
     "description": "A from on February 29th of a non-leap year is rejected - the date part of from / until must be a real date",
-    "spec": "Constraints beyond the schema - every date literal is a real date (the date part of from / until likewise)",
+    "spec": "Document model - every date literal must denote a real date (the date part of from / until likewise)",
     "request": {
         "action": "eval",
         "document": {

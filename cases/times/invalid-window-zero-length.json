@@ -1,6 +1,6 @@
 {
     "description": "A zero-length window is rejected - start must be strictly before end",
-    "spec": "Constraints beyond the schema - start < end for every time window",
+    "spec": "times / allday - windows with start >= end cannot be written (zero length included)",
     "request": {
         "action": "eval",
         "document": {

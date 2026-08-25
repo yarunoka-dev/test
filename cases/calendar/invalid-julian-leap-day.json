@@ -1,6 +1,6 @@
 {
     "description": "A leap day that exists only in the Julian calendar is rejected - dates follow the proleptic Gregorian calendar, where 1500 is not a leap year",
-    "spec": "Document model - proleptic Gregorian calendar; Constraints beyond the schema - every date literal is a real date",
+    "spec": "Document model - proleptic Gregorian calendar; every date literal must denote a real date",
     "request": {
         "action": "eval",
         "document": {

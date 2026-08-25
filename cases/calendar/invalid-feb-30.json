@@ -1,6 +1,6 @@
 {
     "description": "A well-formed date that does not exist is rejected - February has no 30th",
-    "spec": "Constraints beyond the schema - every date literal is a real date",
+    "spec": "Document model - every date literal must denote a real date",
     "request": {
         "action": "eval",
         "document": {
