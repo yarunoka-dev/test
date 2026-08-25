@@ -1,0 +1,16 @@
+{
+    "description": "The day-cycle count 3,652,058 - the maximum - is valid, and with from at the domain's lower end its second matching day is exactly 9999-12-31",
+    "spec": "The day-cycle tuple - the maximum count is 3,652,058, the largest count whose second matching day stays inside the date domain",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"from": "0001-01-01 00:00", "days": [["every", 3652058, "day"]], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "9999-12-31T09:00:00Z"}
+    },
+    "response": {"result": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "A minute sequence count of 5,258,964,960 - one beyond the maximum - makes a document declaring 1.1 invalid",
+    "spec": "every (directly on a schedule) - a count beyond its bound makes the document invalid",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"from": "2026-07-14 00:00", "every": [5258964960, "minute"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-14T00:00:00Z"}
+    },
+    "response": {"invalid": true}
+}
