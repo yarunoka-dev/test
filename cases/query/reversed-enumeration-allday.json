@@ -1,0 +1,16 @@
+{
+    "description": "A reversed enumeration is malformed against an all-day document too - no occurrence kind turns a reversed pair of endpoints into a legal question",
+    "spec": "Evaluation model - query well-formedness; an enumeration's a must not lie after its b",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [27], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-28T00:00:00+09:00", "through": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"malformed": true}
+}

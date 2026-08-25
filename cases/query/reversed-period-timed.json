@@ -1,0 +1,16 @@
+{
+    "description": "A period whose after lies after its through is a malformed query, not false and not an invalid document - the timed document is fine, the question is the side that does not stand",
+    "spec": "Evaluation model - query well-formedness; a violation is a malformed query, an error of a kind distinct from document invalidity",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-28T00:00:00+09:00", "through": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"malformed": true}
+}

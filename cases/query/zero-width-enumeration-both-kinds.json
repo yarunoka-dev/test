@@ -1,0 +1,17 @@
+{
+    "description": "A zero-width enumeration with both kinds standing at its point answers all-day first - the timed occurrence at the instant, and the all-day occurrence of its day, in the existing order",
+    "spec": "Evaluation model - query well-formedness; the timed occurrence at that instant, and the all-day occurrence of the day it falls in, all-day first",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [27], "allday": true},
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T10:00:00+09:00", "through": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27", "2026-07-27T10:00:00+09:00"]}
+}
