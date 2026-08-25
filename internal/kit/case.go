@@ -42,8 +42,18 @@ func LoadCases(fsys fs.FS) ([]Case, error) {
 		if err := json.Unmarshal(data, &c); err != nil {
 			return fmt.Errorf("case %s: %w", path, err)
 		}
-		if c.Expected.Result == nil && !c.Expected.Invalid {
-			return fmt.Errorf("case %s: the expected response carries neither a result nor invalid", path)
+		shapes := 0
+		if c.Expected.Result != nil {
+			shapes++
+		}
+		if c.Expected.Invalid {
+			shapes++
+		}
+		if c.Expected.Malformed {
+			shapes++
+		}
+		if shapes != 1 {
+			return fmt.Errorf("case %s: the expected response must carry exactly one of a result, invalid, or malformed", path)
 		}
 
 		cases = append(cases, c)

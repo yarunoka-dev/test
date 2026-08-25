@@ -59,13 +59,14 @@ second.
 
 ## Response
 
-Answer with exactly one of the three shapes:
+Answer with exactly one of the four shapes:
 
 ```json
 { "result": true }
 { "result": ["2026-07-28", "2026-07-28T00:00:00+09:00"] }
 { "document": { ...the re-emitted document... } }
 { "invalid": true }
+{ "malformed": true }
 ```
 
 - **A judgment** (`point`, `period`) answers `result` with a boolean.
@@ -82,8 +83,18 @@ Answer with exactly one of the three shapes:
   nothing more. No error codes, no messages: reporting *why* a case
   expected rejection is the runner's job, from the case's authoring
   metadata.
+- **A malformed query** answers `malformed` — the spec's query
+  well-formedness rule: a period whose `after` lies after its
+  `through`, or an enumeration whose `from` lies after its `through`.
+  The document is fine; the question is the side that does not stand,
+  which is why this answer is distinct from `invalid` and why the
+  answer is not a plain empty result. Equal endpoints are legal, never
+  malformed. How your implementation surfaces the error internally
+  (an exception, a result type) is its own API; the adapter translates
+  whatever that is into this shape.
 
-Answering invalid is a **normal answer**, delivered with exit status 0.
+Answering invalid or malformed is a **normal answer**, delivered with
+exit status 0.
 A crash, a non-zero exit, or non-JSON output is adapter breakage: the
 runner reports it apart from test results, as infrastructure trouble
 rather than a FAIL.

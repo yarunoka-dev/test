@@ -65,8 +65,8 @@ func TestLoadCasesReadsEveryJSONFileWithItsPathAsName(t *testing.T) {
 }
 
 // The authored expectation decides how the case is judged, so a case
-// carrying neither a result, nor invalid, is a kit-side authoring error
-// and must fail loading, not run.
+// carrying neither a result, nor invalid, nor malformed is a kit-side
+// authoring error and must fail loading, not run.
 func TestLoadCasesRejectsACaseWithoutAnExpectation(t *testing.T) {
 	fsys := fstest.MapFS{
 		"broken.json": &fstest.MapFile{Data: []byte(`{
@@ -79,5 +79,34 @@ func TestLoadCasesRejectsACaseWithoutAnExpectation(t *testing.T) {
 
 	if _, err := LoadCases(fsys); err == nil {
 		t.Fatal("expected an error for a case without an expectation")
+	}
+}
+
+// A malformed-query expectation is a first-class authored shape, and the
+// shapes are mutually exclusive: an expectation carrying two of them
+// would leave the judgment ambiguous, so it fails loading too.
+func TestLoadCasesAcceptsExactlyOneExpectedShape(t *testing.T) {
+	malformed := &fstest.MapFile{Data: []byte(`{
+		"description": "a reversed period is a malformed query",
+		"spec": "Evaluation model - query well-formedness",
+		"request": {
+			"action": "eval",
+			"document": {"version": "1.1", "timezone": "UTC", "schedules": [{"allday": true}]},
+			"query": {"type": "period", "after": "2026-07-28T00:00:00Z", "through": "2026-07-27T00:00:00Z"}
+		},
+		"response": {"malformed": true}
+	}`)}
+	if _, err := LoadCases(fstest.MapFS{"query/reversed-period.json": malformed}); err != nil {
+		t.Fatalf("a malformed expectation must load: %v", err)
+	}
+
+	twoShapes := &fstest.MapFile{Data: []byte(`{
+		"description": "ambiguous expectation",
+		"spec": "nowhere",
+		"request": {"action": "eval", "document": {}},
+		"response": {"invalid": true, "malformed": true}
+	}`)}
+	if _, err := LoadCases(fstest.MapFS{"broken.json": twoShapes}); err == nil {
+		t.Fatal("expected an error for an expectation carrying two shapes")
 	}
 }

@@ -40,11 +40,15 @@ type Query struct {
 	From    string `json:"from,omitempty"`
 }
 
-// Response is what an adapter answers on stdout. Exactly one of the three
+// Response is what an adapter answers on stdout. Exactly one of the four
 // shapes is present: a result (a judgment boolean or an enumeration list),
-// an emitted document, or the invalid flag.
+// an emitted document, the invalid flag, or the malformed flag for a
+// query whose endpoints do not stand (invalid faults the document,
+// malformed faults the question — the two never substitute for each
+// other).
 type Response struct {
-	Result   json.RawMessage `json:"result,omitempty"`
-	Document json.RawMessage `json:"document,omitempty"`
-	Invalid  bool            `json:"invalid,omitempty"`
+	Result    json.RawMessage `json:"result,omitempty"`
+	Document  json.RawMessage `json:"document,omitempty"`
+	Invalid   bool            `json:"invalid,omitempty"`
+	Malformed bool            `json:"malformed,omitempty"`
 }
