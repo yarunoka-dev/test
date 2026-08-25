@@ -21,7 +21,7 @@ cannot special-case one.
 ```json
 {
   "action": "eval",
-  "document": "{ \"version\": \"1.0\", \"timezone\": \"Asia/Tokyo\", \"schedules\": [ ... ] }",
+  "document": "{ \"version\": \"1.1\", \"timezone\": \"Asia/Tokyo\", \"schedules\": [ ... ] }",
   "query": { "type": "point", "at": "2026-07-27T10:00:00+09:00" },
   "bindings": { "company-closures": ["2026-08-05"] }
 }
