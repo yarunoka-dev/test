@@ -94,7 +94,9 @@ Answer with exactly one of the four shapes:
   whatever that is into this shape.
 
 Answering invalid or malformed is a **normal answer**, delivered with
-exit status 0.
+exit status 0. A response carrying more than one of the shapes — or
+none — is adapter breakage: the runner reports it apart from test
+results rather than guessing which shape was meant.
 A crash, a non-zero exit, or non-JSON output is adapter breakage: the
 runner reports it apart from test results, as infrastructure trouble
 rather than a FAIL.

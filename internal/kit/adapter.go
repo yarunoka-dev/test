@@ -59,7 +59,31 @@ func (a Adapter) Ask(req Request) (Response, error) {
 	if err := json.Unmarshal(bytes.TrimSpace(stdout.Bytes()), &answer); err != nil {
 		return Response{}, fmt.Errorf("the adapter's output is not a JSON response: %q%s", stdout.String(), diagnosis(&stderr))
 	}
+	// The protocol says exactly one shape. An answer carrying two (or
+	// none) is adapter wiring breakage, not a wrong answer: letting a
+	// comparator pick the first matching shape would judge a case the
+	// adapter never properly answered.
+	if n := populatedShapes(answer); n != 1 {
+		return Response{}, fmt.Errorf("the adapter's response must carry exactly one of a result, a document, invalid, or malformed; it carries %d: %q%s", n, bytes.TrimSpace(stdout.Bytes()), diagnosis(&stderr))
+	}
 	return answer, nil
+}
+
+func populatedShapes(r Response) int {
+	n := 0
+	if r.Result != nil {
+		n++
+	}
+	if r.Document != nil {
+		n++
+	}
+	if r.Invalid {
+		n++
+	}
+	if r.Malformed {
+		n++
+	}
+	return n
 }
 
 func diagnosis(stderr *bytes.Buffer) string {

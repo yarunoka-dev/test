@@ -32,6 +32,24 @@ func TestAskWritesTheRequestAndReadsTheAnswer(t *testing.T) {
 	}
 }
 
+// The protocol says the answer carries exactly one of the four shapes.
+// An answer carrying two (or none) is not a wrong answer but adapter
+// wiring breakage: the case was not properly answered, so Ask reports
+// it apart from test results instead of letting the first matching
+// shape win a comparison.
+func TestAskRejectsAResponseWithoutExactlyOneShape(t *testing.T) {
+	for _, out := range []string{
+		`{"invalid": true, "malformed": true}`,
+		`{"result": true, "document": {}}`,
+		`{}`,
+	} {
+		a := Adapter{Argv: []string{"sh", "-c", "cat > /dev/null; echo '" + out + "'"}}
+		if _, err := a.Ask(request()); err == nil {
+			t.Errorf("expected an adapter failure for the answer %s", out)
+		}
+	}
+}
+
 func TestAskReportsANonZeroExitAsAdapterFailure(t *testing.T) {
 	a := Adapter{Argv: []string{"sh", "-c", "echo boom >&2; exit 3"}}
 
