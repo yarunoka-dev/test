@@ -1,0 +1,16 @@
+{
+    "description": "A document declaring 1.0 keeps being accepted and evaluates with its meaning unchanged - 1.0 is deprecated, not rejected",
+    "spec": "Versioning - implementations keep accepting 1.0 documents (the acceptance obligation ends only at a major raise)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

@@ -1,0 +1,16 @@
+{
+    "description": "A reversed period is malformed against an all-day document too - the error belongs to the query, whatever kind of occurrences the document describes",
+    "spec": "Evaluation model - query well-formedness; a period's previous run must not lie after its now",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [27], "allday": true}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-28T00:00:00+09:00", "through": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"malformed": true}
+}

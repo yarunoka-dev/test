@@ -1,0 +1,16 @@
+{
+    "description": "A zero-width period answers false even with a timed occurrence standing exactly at its instant - (t, t] holds no instant, and equal endpoints are legal, never malformed",
+    "spec": "Evaluation model - query well-formedness; a period over (t, t] holds no instant and answers false",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-27T10:00:00+09:00", "through": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

@@ -1,0 +1,20 @@
+{
+    "description": "An empty date_sets object stays valid in a document declaring 1.0 - the 1.1 restriction binds only documents that declare 1.1 or newer",
+    "spec": "Versioning - a restriction introduced by a later version never rejects an older document; Correspondence between 1.0 and 1.1 - an empty calendar or date_sets object",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "calendar": {
+                "holidays": ["2026-07-20"],
+                "date_sets": {}
+            },
+            "schedules": [
+                {"days": ["mon"], "if": ["not", "holiday"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": true}
+}

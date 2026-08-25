@@ -1,6 +1,6 @@
 {
     "description": "A zone name that does not exist in the tz database is rejected",
-    "spec": "Document model - timezone; Constraints beyond the schema - existence of the timezone name",
+    "spec": "Document model - timezone; whether a name exists is checked against the implementation's tz database",
     "request": {
         "action": "eval",
         "document": {

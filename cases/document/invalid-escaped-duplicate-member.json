@@ -1,0 +1,17 @@
+{
+    "description": "Member names compare after escape resolution - a key written with the escape \\u0074imezone resolves to timezone, so the document writes one name twice and is rejected",
+    "spec": "Document model - objects reject duplicate member names (names compare on the resolved characters, never on the written bytes)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "\u0074imezone": "UTC",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

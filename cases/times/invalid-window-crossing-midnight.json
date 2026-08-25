@@ -1,6 +1,6 @@
 {
     "description": "A window whose start is after its end is rejected - windows cannot cross midnight",
-    "spec": "times / allday - windows that cross midnight cannot be written; Constraints beyond the schema - start < end",
+    "spec": "times / allday - windows that cross midnight (start >= end) cannot be written",
     "request": {
         "action": "eval",
         "document": {

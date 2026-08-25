@@ -63,6 +63,28 @@ func TestCompareEvalJudgsInvalid(t *testing.T) {
 	}
 }
 
+// A malformed query (a reversed pair of endpoints) is answered with the
+// malformed flag: an error of its own kind, never interchangeable with
+// invalid (the document is fine; the question is the side that does not
+// stand) and never a plain false.
+func TestCompareEvalJudgsMalformed(t *testing.T) {
+	if ok, _ := CompareEval(resp(`{"malformed": true}`), resp(`{"malformed": true}`)); !ok {
+		t.Error("malformed expected, malformed answered: must pass")
+	}
+	if ok, _ := CompareEval(resp(`{"malformed": true}`), resp(`{"result": false}`)); ok {
+		t.Error("malformed expected, a boolean answered: must fail")
+	}
+	if ok, _ := CompareEval(resp(`{"malformed": true}`), resp(`{"invalid": true}`)); ok {
+		t.Error("malformed expected, invalid answered: must fail")
+	}
+	if ok, _ := CompareEval(resp(`{"result": true}`), resp(`{"malformed": true}`)); ok {
+		t.Error("a result expected, malformed answered: must fail")
+	}
+	if ok, _ := CompareEval(resp(`{"invalid": true}`), resp(`{"malformed": true}`)); ok {
+		t.Error("invalid expected, malformed answered: must fail")
+	}
+}
+
 // The emitted document compares structurally: JSON key order and
 // whitespace carry no meaning, so they must not fail the round-trip.
 func TestCompareEmitComparesStructurally(t *testing.T) {
@@ -83,5 +105,10 @@ func TestCompareEmitComparesStructurally(t *testing.T) {
 	}
 	if ok, _ := CompareEmit(authored, true, resp(`{"invalid": true}`)); !ok {
 		t.Error("invalid answered for an invalid document must pass")
+	}
+	// An emit request carries no query, so there is no query to be
+	// malformed: the answer is never right.
+	if ok, _ := CompareEmit(authored, false, resp(`{"malformed": true}`)); ok {
+		t.Error("malformed answered to an emit request must fail")
 	}
 }

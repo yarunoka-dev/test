@@ -1,0 +1,16 @@
+{
+    "description": "A zero-width period answers false inside an all-day occurrence's day - (t, t] holds no instant, so not even a day that is due all day long overlaps it",
+    "spec": "Evaluation model - query well-formedness; a period over (t, t] holds no instant and answers false",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [27], "allday": true}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-27T12:00:00+09:00", "through": "2026-07-27T12:00:00+09:00"}
+    },
+    "response": {"result": false}
+}

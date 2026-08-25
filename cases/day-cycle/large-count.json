@@ -1,6 +1,6 @@
 {
-    "description": "The day-cycle count has no upper bound - every 400 days anchored 2025-01-01 fires next on 2026-02-05",
-    "spec": "The day-cycle tuple - the count has no upper bound",
+    "description": "A day-cycle period longer than a year crosses the year boundary intact - every 400 days anchored 2025-01-01 fires next on 2026-02-05",
+    "spec": "The day-cycle tuple - every Nth day counting the from date as day one (the cycle is not bounded by month or year)",
     "request": {
         "action": "eval",
         "document": {

@@ -1,0 +1,16 @@
+{
+    "description": "A shift whose search leaves the date domain finds no landing - 9999-12-31 is a Friday, the next Monday lies past the domain, and the base day produces no occurrences while the document stays valid",
+    "spec": "Evaluation model - the date domain; a shift whose search leaves the domain finds no landing, exactly as when the 366-day cap runs out",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [9999], "months": [12], "days": [31], "shift": ["next", "mon"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "9999-12-01T00:00:00Z", "through": "9999-12-31T23:59:59Z"}
+    },
+    "response": {"result": false}
+}

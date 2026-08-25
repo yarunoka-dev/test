@@ -1,0 +1,16 @@
+{
+    "description": "A reversed period against a document declaring 1.0 is still a malformed query - the evaluation model, query well-formedness included, applies to every accepted document whatever version it declares",
+    "spec": "Versioning - evaluation semantics are one; Evaluation model - query well-formedness",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.0",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "period", "after": "2026-07-28T00:00:00+09:00", "through": "2026-07-27T00:00:00+09:00"}
+    },
+    "response": {"malformed": true}
+}

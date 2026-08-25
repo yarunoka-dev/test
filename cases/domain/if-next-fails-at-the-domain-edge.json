@@ -1,0 +1,16 @@
+{
+    "description": "An if whose next neighbour lies outside the date domain fails the guard - the day after 9999-12-31 would be a Saturday, but there is no such day to test, so next-sat does not hold",
+    "spec": "Evaluation model - the date domain; an if whose prev / next neighbour lies outside the domain fails the whole guard",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"years": [9999], "months": [12], "days": [31], "if": ["next", "sat"], "times": ["09:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "9999-12-31T09:00:00Z"}
+    },
+    "response": {"result": false}
+}

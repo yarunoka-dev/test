@@ -1,0 +1,16 @@
+{
+    "description": "A zero-width enumeration inside a day answers that day's all-day occurrence - the day overlaps the point it is asked at",
+    "spec": "Evaluation model - query well-formedness; an enumeration over [t, t] answers the all-day occurrence of the day t falls in",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": [27], "allday": true}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T12:00:00+09:00", "through": "2026-07-27T12:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27"]}
+}

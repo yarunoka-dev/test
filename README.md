@@ -1,6 +1,6 @@
 # yarunoka-test
 
-The conformance test kit for [Yrnk](https://github.com/yarunoka-dev/spec/tree/1.0),
+The conformance test kit for [Yrnk](https://github.com/yarunoka-dev/spec/tree/1.1),
 the Yarunoka schedule DSL: the authored conformance cases and the runner
 that judges them, in one binary.
 
@@ -13,7 +13,7 @@ failed and why. See [docs/protocol.md](docs/protocol.md) for the
 adapter contract.
 
 > **Versioning**: the kit's version tracks the spec version its embedded
-> cases target — v1.0.z carries the authored case set for spec 1.0, and
+> cases target — vX.Y.z carries the authored case set for spec X.Y, and
 > the last digit counts the kit's own fixes within that target.
 
 ## Usage
@@ -33,7 +33,8 @@ The mode is required:
 - **eval** — the three queries of the evaluation model (the judgment at
   a point, the judgment over a period, the enumeration)
 - **emit** — the round-trip spelling check: parse, re-emit, compare
-  against the canonical spelling. For implementations with a serializer
+  against the document as authored. For implementations with a
+  serializer
 - **all** — both
 
 Passing eval and passing emit are independent claims — an

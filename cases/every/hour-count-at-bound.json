@@ -1,0 +1,16 @@
+{
+    "description": "The hour sequence count 87,649,415 - the maximum - is valid, and with from at the domain's lower end its second point is 9999-12-31 23:00",
+    "spec": "every (directly on a schedule) - the maximum count is 87,649,415 for hour, the largest count whose second point stays inside the date domain",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "UTC",
+            "schedules": [
+                {"from": "0001-01-01 00:00", "every": [87649415, "hour"]}
+            ]
+        },
+        "query": {"type": "point", "at": "9999-12-31T23:00:00Z"}
+    },
+    "response": {"result": true}
+}

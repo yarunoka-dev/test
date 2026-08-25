@@ -1,0 +1,16 @@
+{
+    "description": "A zero-width enumeration answers what stands exactly at its point - [t, t] contains the timed occurrence at that instant",
+    "spec": "Evaluation model - query well-formedness; an enumeration over [t, t] answers with what stands exactly at that point",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "2026-07-27T10:00:00+09:00", "through": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"result": ["2026-07-27T10:00:00+09:00"]}
+}

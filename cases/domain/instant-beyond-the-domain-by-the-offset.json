@@ -1,0 +1,16 @@
+{
+    "description": "The domain closes on calendar days read on the document clock, not on instants - in a UTC+14 zone the first day's instants begin before 0001-01-01T00:00:00Z, and the timed occurrence at 0001-01-01 00:30 local is generated and answered",
+    "spec": "Evaluation model - the date domain; an occurrence's instant may exceed the domain by the zone offset, the bound is on the day",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Etc/GMT-14",
+            "schedules": [
+                {"years": [1], "months": [1], "days": [1], "times": ["00:30"]}
+            ]
+        },
+        "query": {"type": "enumeration", "from": "0000-12-31T10:00:00Z", "through": "0000-12-31T11:00:00Z"}
+    },
+    "response": {"result": ["0001-01-01T00:30:00+14:00"]}
+}

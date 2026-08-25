@@ -1,0 +1,16 @@
+{
+    "description": "The well-formedness check reads the endpoints before they are cut to the date domain - a reversed pair lying entirely past the domain is malformed, not an empty answer",
+    "spec": "Evaluation model - query well-formedness; the check reads the endpoints before they are cut to the date domain",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Etc/GMT-14",
+            "schedules": [
+                {"allday": true}
+            ]
+        },
+        "query": {"type": "period", "after": "9999-12-31T12:00:00Z", "through": "9999-12-31T11:00:00Z"}
+    },
+    "response": {"malformed": true}
+}

@@ -1,0 +1,17 @@
+{
+    "description": "An empty calendar object is rejected in a document declaring 1.1 - a document with no definitions omits the key, so that the statement has a single spelling",
+    "spec": "Document model - empty objects are invalid (a calendar must hold at least one entry when present)",
+    "request": {
+        "action": "eval",
+        "document": {
+            "version": "1.1",
+            "timezone": "Asia/Tokyo",
+            "calendar": {},
+            "schedules": [
+                {"days": ["mon"], "times": ["10:00"]}
+            ]
+        },
+        "query": {"type": "point", "at": "2026-07-27T10:00:00+09:00"}
+    },
+    "response": {"invalid": true}
+}

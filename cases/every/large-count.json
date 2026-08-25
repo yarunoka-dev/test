@@ -1,6 +1,6 @@
 {
-    "description": "The sequence count has no upper bound and lands on non-zero seconds - 100000 seconds after 7/14 00:00 is 7/15 03:46:40",
-    "spec": "every (directly on a schedule) - the count has no upper bound",
+    "description": "A sequence keeps counting across days and lands on non-zero seconds - 100000 seconds after 7/14 00:00 is 7/15 03:46:40",
+    "spec": "every (directly on a schedule) - from + k x interval, counting across days with no per-day re-anchoring",
     "request": {
         "action": "eval",
         "document": {

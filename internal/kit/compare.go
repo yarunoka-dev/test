@@ -17,8 +17,17 @@ func CompareEval(expected, actual Response) (bool, string) {
 		}
 		return false, fmt.Sprintf("expected invalid, got %s", describe(actual))
 	}
+	if expected.Malformed {
+		if actual.Malformed {
+			return true, ""
+		}
+		return false, fmt.Sprintf("expected the malformed-query answer, got %s", describe(actual))
+	}
 	if actual.Invalid {
 		return false, "expected a result, got invalid"
+	}
+	if actual.Malformed {
+		return false, "expected a result, got the malformed-query answer"
 	}
 	if actual.Result == nil {
 		return false, fmt.Sprintf("expected a result, got %s", describe(actual))
@@ -49,6 +58,9 @@ func CompareEmit(authored json.RawMessage, authoredInvalid bool, actual Response
 	}
 	if actual.Invalid {
 		return false, "expected the round-tripped document, got invalid"
+	}
+	if actual.Malformed {
+		return false, "expected the round-tripped document, got the malformed-query answer (an emit request carries no query)"
 	}
 	if actual.Document == nil {
 		return false, fmt.Sprintf("expected a document, got %s", describe(actual))
@@ -127,6 +139,10 @@ func describe(r Response) string {
 		return fmt.Sprintf("the result %s", r.Result)
 	case r.Document != nil:
 		return "a document"
+	case r.Invalid:
+		return "invalid"
+	case r.Malformed:
+		return "the malformed-query answer"
 	default:
 		return "an empty response"
 	}
